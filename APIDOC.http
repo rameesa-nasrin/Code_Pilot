@@ -1,0 +1,135 @@
+######          ACCOUNTS API CALLS         ######
+
+#api call for creating admin
+###
+POST http://127.0.0.1:8000/accounts/admin/register/
+Content-Type: application/json
+
+{
+    "username":"admin2",
+    "email":"admin2@gmail.com",
+    "password":"admin2@123",
+    "phone":99229792277
+}
+
+
+#api call for creating student
+###
+POST http://127.0.0.1:8000/accounts/student/register/
+Content-Type: application/json
+
+{
+    "username":"student",
+    "email":"student@gmail.com",
+    "password":"student@123",
+    "phone":992235556277
+}
+
+
+
+
+
+
+
+
+
+
+###########       EXAM API CALLS        ########
+
+
+#api call to obtain token
+###
+POST http://127.0.0.1:8000/token/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin@123"
+    
+}
+
+#rameesa --> Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
+#student --> Token f4de56b7fea410a1b216d1f5b885f0c5a1c4f5f8
+#admin   --> Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+#api call for listing assessment
+###
+GET http://127.0.0.1:8000/assessment/all/
+Accept: application/json
+Authorization: Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
+
+#api call for creating assessment
+###
+POST http://127.0.0.1:8000/assessment/add/
+Content-Type: application/json
+Authorization: Token  e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+{
+    "title":"python fundamentals test",
+    "batch":"python django june",
+    "language":"python",
+    "exam_date":"2026-10-29",
+    "duration":2,
+    "start_time":"10:00:00"
+}
+
+
+#api call for fetching assessment
+###
+GET http://127.0.0.1:8000/assessment/2/
+Accept: application/json
+Authorization: Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
+
+
+#api call for updating assessment
+###
+PUT http://127.0.0.1:8000/assessment/2/
+Content-Type: application/json
+Authorization: Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
+
+{
+    "title":"java fundamentals test",
+    "batch":"python django july",
+    "language":"java",
+    "exam_date":"2026-10-29",
+    "duration":2,
+    "start_time":"9:00:00"
+}
+
+
+#api call for deleting assessment
+###
+DELETE http://127.0.0.1:8000/assessment/3/
+Content-Type: application/json
+Authorization:Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
+
+
+
+
+
+##########         QUESTION API CALLS             ######
+
+
+#api call for adding question
+###
+POST http://127.0.0.1:8000/problem/assessment/1/question/
+Content-Type: application/json
+Authorization:Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+{
+    "title":"product",
+    "description":"write a pgm to find product of 2 numbers",
+    "score":50,
+    "sample_input":"A=20,B=10",
+    "sample_output":"result=200"
+    
+}
+
+
+#api call to fetch a question
+###
+GET http://127.0.0.1:8000/problem/question/4/
+Accept: application/json
+Authorization:Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+
