@@ -32,4 +32,5 @@ urlpatterns = [
 
     path('problem/',include("problem.urls")),
 
+    path('evaluation/',include("evaluation.urls")),
 ]
