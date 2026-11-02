@@ -4,6 +4,9 @@ from django.utils import timezone
 
 from exam.models import Assessment
 
+from problem.models import Question
+
+
 class Submission(models.Model):
 
     STATUS_CHOICES = (
@@ -48,7 +51,7 @@ class Answer(models.Model):
     
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE, related_name='answers')
     
-    question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='answers')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
     
     answer_text = models.TextField()
     
@@ -56,7 +59,7 @@ class Answer(models.Model):
     
     feedback = models.TextField(null=True, blank=True)
     
-    evaluated_at = models.DateTimeField(null=True, blank=True)
+    evaluated_at = models.DateTimeField(null=True,blank=True)
 
     class Meta:
 
@@ -65,3 +68,5 @@ class Answer(models.Model):
     def __str__(self):
         
         return f"Answer to Q{self.question.id} for Submission {self.submission.id}"
+
+    

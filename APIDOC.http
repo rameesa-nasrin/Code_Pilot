@@ -26,10 +26,25 @@ Content-Type: application/json
 }
 
 
+#api call for jwt token
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/
+Content-Type: application/json
+
+{
+    "username":"student",
+    "password":"student@123"
+}
 
 
+#api call for refreshing token
+###
+POST http://127.0.0.1:8000/accounts/jwt/token/refresh/
+Content-Type: application/json
 
-
+{
+    "refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc5MzY4ODc1OSwiaWF0IjoxNzkzNjAyMzU5LCJqdGkiOiIxZGU5YWYxNzdhMjk0NWU0ODk3MjczZDY0YTNlNTAxMyIsInVzZXJfaWQiOiIzIn0.SDcI3OK5fNAZBOh8ZvlPfALUPzWO6_tfqiGrLGhqjFc"
+}
 
 
 
@@ -112,7 +127,7 @@ Authorization:Token  4af8191151765299c2ecc2b84f67150af1fb5b4f
 
 #api call for adding question
 ###
-POST http://127.0.0.1:8000/problem/assessment/1/question/
+POST http://127.0.0.1:8000/problem/assessment/2/question/
 Content-Type: application/json
 Authorization:Token e4822ddbffe88ae7af59f728948dd75958eda5bf
 
@@ -131,5 +146,49 @@ Authorization:Token e4822ddbffe88ae7af59f728948dd75958eda5bf
 GET http://127.0.0.1:8000/problem/question/4/
 Accept: application/json
 Authorization:Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+
+
+
+
+
+#  ==========       SUBMISSION API CALLS    ==================
+
+
+#api call for submission
+###
+POST http://127.0.0.1:8000/evaluation/assessment/2/submission/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkzNjM4NDk4LCJpYXQiOjE3OTM2MzgxOTgsImp0aSI6IjJiZWZiMGIxZWRiZjQ4NzViNGMxMGNmMTdmMmQ4Nzc2IiwidXNlcl9pZCI6IjMifQ.C7Uxf2qiZ8cvGam5wb1spYILUhX-6m3pzABy1DbWhgc
+
+#api call for adding answer
+###
+POST http://127.0.0.1:8000/evaluation/submission/1/answer/
+Content-Type: application/json
+Authorization: Token f4de56b7fea410a1b216d1f5b885f0c5a1c4f5f8
+
+{
+    "question":5,
+    "answer_text":"print('hello world')"
+}
+
+
+#api call for fetching submission detail
+###
+GET http://127.0.0.1:8000/evaluation/submission/1/
+Accept: application/json
+Authorization: Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+
+#api call for evaluating answer(updating answer)
+###
+PATCH http://127.0.0.1:8000/evaluation/answer/1/
+Content-Type: application/json
+Authorization: Token e4822ddbffe88ae7af59f728948dd75958eda5bf
+
+{
+    "marks_awarded":130,
+    "feedback":"entire logic wrong"
+}
 
 
