@@ -6,6 +6,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from accounts.views import ProfileUpdateView
+
+from accounts.views import ProfileDetailView
+
 urlpatterns=[
 
     path("admin/register/",AdminCreateView.as_view()),
@@ -16,4 +20,7 @@ urlpatterns=[
 
     path('jwt/token/refresh/',TokenRefreshView.as_view()),
 
+    path('profile/complete/',ProfileUpdateView.as_view()),
+
+    path('profile/me/',ProfileDetailView.as_view()),
 ]

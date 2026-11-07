@@ -153,7 +153,3 @@ class AnswerUpdateView(UpdateAPIView):
         else:
 
             return Response(data=serializer_instance.errors)
-
-        
-
-        
